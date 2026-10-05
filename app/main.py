@@ -76,9 +76,9 @@ async def command_headers_handler(message: Message) -> None:
         )
 
         report = (
-            f"🛡️ *HTTP SECURITY REPORT*\n"
-            f"🔗 *Target:* `{result.get('url', target_url)}`\n"
-            f"📡 *Status:* `{result.get('status_code', 'Unknown')}`\n"
+            f"🛡️ *SECURITY REPORT*\n"
+            f"*Target:* `{result.get('url', target_url)}`\n"
+            f"*Status:* `{result.get('status_code', 'Unknown')}`\n"
             f"━━━━━━━━━━━━━━━━━━\n"
             f"{missing_text}"
         )
@@ -128,7 +128,7 @@ async def command_cookies_handler(message: Message) -> None:
             )
             report = (
                 f"🍪 *COOKIE SECURITY REPORT*\n"
-                f"🔗 *Target:* `{result['url']}`\n"
+                f"*Target:* `{result['url']}`\n"
                 f"⚠️ *Vulnerable Cookies:* {len(insecure)}/{total}\n"
                 f"━━━━━━━━━━━━━━━━━━\n"
                 f"{issues_text}"
@@ -152,7 +152,7 @@ async def handle_target_url(message: Message) -> None:
         return
 
     await message.answer(
-        f"🎯 *Target Locked:* `{target_url}`\nSelect a reconnaissance module below:",
+        f"*Target:* `{target_url}`\nSelect a reconnaissance module below:",
         reply_markup=get_recon_keyboard(target_url),
         parse_mode="Markdown",
     )
@@ -163,7 +163,7 @@ async def callback_cancel(callback: CallbackQuery) -> None:
     # Type Guard: Ensure the message is accessible before editing
     if isinstance(callback.message, Message):
         await callback.message.edit_text(
-            " *Scan Cancelled.* Target discarded.", parse_mode="Markdown"
+            "*Scan Cancelled.* Target discarded.", parse_mode="Markdown"
         )
     await callback.answer()
 
@@ -206,9 +206,9 @@ async def callback_scan_execute(callback: CallbackQuery) -> None:
 
             # Objective Reporting Structure
             report_lines = [
-                f"🛡️ *HTTP SECURITY AUDIT*",
-                f"🔗 *Target:* `{result.get('url')}`",
-                f"📡 *Status:* `{result.get('status_code')}`",
+                f"*SECURITY AUDIT*",
+                f"*Target:* `{result.get('url')}`",
+                f"*Status:* `{result.get('status_code')}`",
                 f"━━━━━━━━━━━━━━━━━━",
             ]
 
@@ -241,7 +241,7 @@ async def callback_scan_execute(callback: CallbackQuery) -> None:
 
             report_lines = [
                 f"🍪 *COOKIE SECURITY AUDIT*",
-                f"🔗 *Target:* `{result.get('url')}`",
+                f"*Target:* `{result.get('url')}`",
                 f"━━━━━━━━━━━━━━━━━━",
             ]
 
@@ -278,7 +278,7 @@ async def callback_scan_execute(callback: CallbackQuery) -> None:
 
             report_lines = [
                 f"📂 *SENSITIVE PATH AUDIT*",
-                f"🔗 *Target:* `{result.get('url')}`",
+                f"*Target:* `{result.get('url')}`",
                 f"━━━━━━━━━━━━━━━━━━",
             ]
 

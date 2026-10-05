@@ -19,6 +19,6 @@ def get_recon_keyboard(target_url: str) -> InlineKeyboardMarkup:
                 text="📄 Generate Full Report", callback_data=f"rpt|{safe_url}"
             )
         ],
-        [InlineKeyboardButton(text="🛑 Cancel", callback_data="cancel")],
+        [InlineKeyboardButton(text="Cancel", callback_data="cancel")],
     ]
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
