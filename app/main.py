@@ -206,7 +206,7 @@ async def callback_scan_execute(callback: CallbackQuery) -> None:
 
             # Objective Reporting Structure
             report_lines = [
-                f"*SECURITY AUDIT*",
+                f"*HTTP SECURITY AUDIT*",
                 f"*Target:* `{result.get('url')}`",
                 f"*Status:* `{result.get('status_code')}`",
                 f"━━━━━━━━━━━━━━━━━━",
